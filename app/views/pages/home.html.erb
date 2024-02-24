@@ -1,0 +1,33 @@
+<article>
+  <% if current_user %>
+  <section>
+    <h1 class="font-bold text-4xl"><%= current_user.email %></h1>
+    <% if current_user.admin? %>
+      <p>Create a <%= link_to "Post", new_post_path, class: "text-blue-500" %></p>
+    <% end %>
+
+    <p><%= link_to "Edit Profile", edit_user_registration_path, class: "text-blue-500" %></p>
+    <p><%= button_to "Logout", destroy_user_session_path, method: :delete, class: "text-blue-500" %></p>
+  </section>
+  <% else %>
+  <section>
+    <h1 class="font-bold text-4xl">You're not logged in, yet!<h1>
+    <p><%= link_to "Create an Account", new_user_registration_path, class: "text-blue-500" %></p>
+    <p><%= link_to "Login", new_user_session_path, class: "text-blue-500" %></p>
+  </section>
+  <% end %>
+  <section>
+  <h1 class="font-bold text-4xl">Godot on Rails!</h1>
+  <p>Powered by <%= link_to "Kamal", "https://kamal-deploy.org/", class: "text-blue-500" %></p>
+  </section>
+  <br />
+  <section>
+    <h2 class="font-bold text-2xl">Play our game!</h2>
+    <p>Check it out <%= link_to "here", game_path, class: "text-blue-500" %>!</p>
+  </section>
+    <br />
+  <section>
+    <h2 class="font-bold text-2xl">Dev Blog!</h2>
+    <p>Read about our development <%= link_to "here", posts_path, class: "text-blue-500" %>!</p>
+  </section>
+</article>
